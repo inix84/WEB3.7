@@ -66,7 +66,7 @@ public class IngredientServiceImpl implements IngredientService {
             String json = new ObjectMapper().writeValueAsString(ingredients);
             ingredientFilesService.saveIngredientsToFile(json);
         } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Не удалось сохранить ингредиент в файл");
         }
     }
 //чтение из файла

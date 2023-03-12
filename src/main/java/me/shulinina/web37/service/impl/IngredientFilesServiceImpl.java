@@ -30,7 +30,7 @@ public class IngredientFilesServiceImpl implements IngredientFilesService {
         try {
             return Files.readString(Path.of(ingredientsFilePath, ingredientsFileName));
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Не удалось получить ингредиент из файла");
         }
     }
 //метод возвращает файл
@@ -44,7 +44,7 @@ public class IngredientFilesServiceImpl implements IngredientFilesService {
         try {
             return  Files.createTempFile(Path.of(ingredientsFilePath), "tempFile", suffix);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Не удалось создать временный файл");
         }
     }
 //удалить и очистить файл

@@ -82,10 +82,10 @@ public class RecipeServiceImpl implements RecipeService {
     private void saveToFile() {
         try {
             DataFile dataFile = new DataFile();
-            String json = new ObjectMapper().writeValueAsString(dataFile);//сохранение информации в файл
+            String json = new ObjectMapper().writeValueAsString(dataFile);//сохранение рецепта в файл
             recipeFilesService.saveRecipesToFile(json);
         } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Не удалось сохранить рецепт в файл");
         }
     }
 //чтение из файла
@@ -98,7 +98,7 @@ public class RecipeServiceImpl implements RecipeService {
             lastId = dataFile.getLastId();
             recipes = dataFile.getRecipes();
         } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Не удалось получить рецепт из файла");
         }
     }
     @Data
